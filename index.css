@@ -20,6 +20,9 @@ h2{
 a{
 	text-decoration: none;
 }
+a.disabled{
+	pointer-events:none;
+}
 .button-link{	
 	border:2px #888 solid;
 	border-radius: 10px 5px;
