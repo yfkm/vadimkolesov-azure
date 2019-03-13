@@ -1,4 +1,6 @@
-var W, H;
+var W, H, animReqest;
+var N=5, iter=0;
+var points=[]
 function rand(min,max){
 	return Math.random()*(max-min)+min;
 };
@@ -9,12 +11,7 @@ function getColor(r,g,b){
 	return 'rgb('+r+','+g+','+b+')';
 }
  var isRunning=false,
-	ball=[],
-	matrix=null,
-	colors=null,
-	n=1500,
-	max_dist=100,
-	scale=4,
+	
 	canvas,
 	ctx;
 function init(){
@@ -22,112 +19,86 @@ function init(){
 	ctx = canvas.getContext('2d');
 	W=canvas.width, H=canvas.height;
 	var inf = document.getElementById('inf').getContext('2d');
-	matrix=[[-1,-10,-10,-10,-10],
-			[-10,-1,-10,-10,-10],
-			[-10,-10,-1,-10,-10],
-			[-10,-10,-10,-1,-10],
-			[-10,-10,-10,-10,-1],];
-	colors=[randColor(),randColor(),randColor(),randColor(),randColor()];
-	for(var i=0;i<colors.length;i++){
-		inf.fillStyle = colors[i];
-		inf.fillRect(5+50*i,5,40,40);
-	}	
-	for(var i=0;i<n;i++){
-		ball[i]={
-			x: rand(10,W-10),
-			y: rand(10,H-10),
-			vx: 0*rand(-1,1),
-			vy: 0*rand(-1,1),
-			ax: 0*rand(-1,1),
-			ay: 0*rand(-1,1),
-			t: Math.round(rand(0,4)),
-			r: rand(1,5),
-			draw:function(){			
-				ctx.beginPath();
-				ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2, true);
-				ctx.closePath();
-				ctx.fillStyle = colors[this.t];
-				//ctx.fillRect(this.x,this.y,this.r,this.r);
-				ctx.fill();
-			},
-			move:function(){
-				
-				if(this.x<0||this.x>W)this.vx*=-1;
-				if(this.y<0||this.y>H)this.vy*=-1;
-				this.x+=this.vx;
-				this.y+=this.vy;
-				this.vx+=this.ax;
-				this.vy+=this.ay;
-				var m=this.vx**2+this.vy**2;
-				if (m>1){
-					this.vx/=m;
-					this.vy/=m;
-				}
-				this.vx*=0.95;
-				this.vy*=0.95;
-			}
-		};
-	}
+	iter=0;
+	points=[];
+	points.push({x:0,y:H/2});
+	points.push({x:W,y:H/2});
 };
 function clear() {
-	ctx.fillStyle = 'rgba(0, 0, 0,0.3)';
+	ctx.fillStyle = 'rgba(0, 0, 0,)';
 	ctx.fillRect(0,0,W,H);
 };
+function line(x1,y1,x2,y2){
+	ctx.beginPath();
+	ctx.moveTo(x1,y1);
+	ctx.lineTo(x2,y2);
+	ctx.stroke();
+}
 function draw(){
 	clear();
-	for(var i=0;i<n;i++){
-		ball[i].draw();
+	ctx.strokeStyle=getColor(255,255,255);
+	ctx.lineWidth=1;
+	
+	ctx.beginPath();
+	ctx.moveTo(points[0].x,points[0].y);
+	for (var i=0;i<points.length-1;i++){
+		
+	ctx.lineTo(points[i+1].x,points[i+1].y);
 	}
+	
+	ctx.stroke();
+	
 	
 };
 function dist(a,b){
 	return Math.sqrt((a.x-b.x)**2+(a.y-b.y)**2);
 };
-function applyforce(j){
-	var d,fx=0,fy=0,a=ball[j];
-	for(var i=0;i<n;i++){
-		var b=ball[i];
-		d=dist(a,b);
-		if (d<max_dist){
-			if	(d>a.r+b.r){
-				fx+=matrix[a.t][b.t]*(b.x-a.x)/(d**3);
-				fy+=matrix[a.t][b.t]*(b.y-a.y)/(d**3);
-			}
-			else {
-				fx-=(b.x-a.x)/max_dist;
-				fy-=(b.y-a.y)/max_dist;
-			}	
-		}		
-	}
-	if (Math.min(a.x, W-a.x)>a.r/2)
-		fx+=25/(a.x**2)-25/((W-a.x)**2);
-	if (Math.min(a.y, H-a.y)>a.r/2)
-		fy+=25/(a.y**2)-25/((H-a.y)**2);
-	a.ax=fx;
-	a.ay=fy;
-	var m=Math.sqrt(a.ax**2+a.ay**2);
-	if (m>1){
-		this.ax/=m;
-		this.ay/=m;
-	}
 	
-};
 function update(){
+
 	
-	for (var j=0;j<n;j++){	
-		applyforce(j);		
-	}
-	
-	for(var i=0;i<n;i++){
-		ball[i].move();
-	}
 	draw();
-	window.requestAnimationFrame(update);
+	var newPoints=[];
+	var i;
+	for (i=0;i<points.length-1;i++){
+		newPoints.push(points[i]);
+		newPoints.push({x:(points[i].x+(points[i+1].x-points[i].x)/3),y:(points[i].y+(points[i+1].y-points[i].y)/3)});		
+		newPoints.push({x:((points[i+1].y-points[i].y)/3+(points[i+1].x+points[i].x)/2),y:((points[i].x-points[i+1].x)/3+(points[i+1].y+points[i].y)/2)});		
+		newPoints.push({x:(points[i].x+2*(points[i+1].x-points[i].x)/3),y:(points[i].y+2*(points[i+1].y-points[i].y)/3)});
+	}	
+	newPoints.push(points[i]);
+	points=newPoints.slice();
+	newPoints=[];
+	if (isRunning){
+		
+		setTimeout(function() {
+			animReqest=window.requestAnimationFrame(update);
+ 
+    }, 1000 );
+		if (iter>N){
+			stop();
+		}
+		iter++;
+	}
 };
+function restart(){
+	
+	isRunning=false;
+	main();
+};
+function stop(){
+	
+	if (isRunning)
+		window.cancelAnimationFrame(animReqest);
+	
+	isRunning=false;
+}
 function main(){
 	if (!isRunning){
 		init();
-		window.requestAnimationFrame(update);
+		
+		clear();
+		animReqest=window.requestAnimationFrame(update);
 		isRunning=true;
 	}
 };
