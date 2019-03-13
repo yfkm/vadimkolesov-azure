@@ -8,6 +8,9 @@ body{
 	background: #888;
 	display: inline-block;
 }
+.buttons_wrapper{
+	display:flex;
+}
 canvas{
 	background: #000;
 	display:block;
@@ -16,9 +19,11 @@ canvas{
 	margin-bottom: 8px;
 }
 .button{
-	display: block;
+	display: inline;
 	margin-top: 10px;
 	padding: 6px;
+	width:100%;
+	margin:10px 5px 0 5px;
 	background: #080;
 	color: #020;
 	text-align:center;
