@@ -1,0 +1,39 @@
+body{
+	background: #ccc;
+	
+}
+.demo_wrapper{
+	float:center;
+	padding: 10px;
+	background: #888;
+	display: inline-block;
+}
+canvas{
+	background: #000;
+	display:block;
+}
+.info{
+	margin-bottom: 8px;
+}
+.button{
+	display: block;
+	margin-top: 10px;
+	padding: 6px;
+	background: #080;
+	color: #020;
+	text-align:center;
+	font-style: italic;
+	font-family: 'arial';
+	border: 2px solid #030;	
+	transition: linear 0.2s;
+}
+.button:hover{
+	transition: linear 0.2s;
+	background: #040;
+	color: #060;
+}
+.button:active{
+	transition: linear 0.2s;
+	background: #020;
+	color: #080;
+}

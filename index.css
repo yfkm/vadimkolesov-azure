@@ -1,0 +1,41 @@
+body{
+	background:#888;
+}
+.main-block{
+	border:6px #aaa solid;
+	border-radius: 100px 50px;
+	background:#eee;
+	padding:50px;
+	margin:25px;
+}
+.sub-block{
+	
+}
+h1{
+	
+}
+h2{
+	
+}
+a{
+	text-decoration: none;
+}
+.button-link{	
+	border:2px #888 solid;
+	border-radius: 10px 5px;
+	background:#ddd;
+	padding:5px;
+	margin:2px;
+	color:#444;
+	transition: linear 0.2s;
+}
+.button-link:hover{
+	
+	color:#444;
+	background:#ddd;
+	transition: linear 0.2s;
+}
+.button-link:active{
+	transition: linear 0.2s;
+	
+}
