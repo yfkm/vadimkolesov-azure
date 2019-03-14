@@ -3,6 +3,8 @@ var W, H,
 	N=5, iter=0,
 	points=[],
 	isRunning=false,
+	canvas,
+	ctx;
 function rand(min,max){
 	return Math.random()*(max-min)+min;
 };
@@ -13,8 +15,6 @@ function getColor(r,g,b){
 	return 'rgb('+r+','+g+','+b+')';
 }
 	
-	canvas,
-	ctx;
 function init(){
 	canvas = document.getElementById('cnv');
 	ctx = canvas.getContext('2d');
@@ -92,8 +92,7 @@ function stop(){
 }
 function start(){
 	if (!isRunning){
-		init();
-		
+		init();		
 		clear();
 		animReqest=window.requestAnimationFrame(update);
 		isRunning=true;
