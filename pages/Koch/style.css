@@ -42,3 +42,8 @@ canvas{
 	background: #020;
 	color: #080;
 }
+.label{
+	color:#888;
+	margin:5px;
+	font-style: italic;
+}

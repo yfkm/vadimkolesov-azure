@@ -1,14 +1,5 @@
-var W, H;
-function rand(min,max){
-	return Math.random()*(max-min)+min;
-};
-function randColor(){
-	return 'rgb('+Math.round(rand(0,255))+','+Math.round(rand(0,255))+','+Math.round(rand(0,255))+')';
-};
-function getColor(r,g,b){
-	return 'rgb('+r+','+g+','+b+')';
-}
- var isRunning=false,
+var W, H,
+   isRunning=false,
 	ball=[],
 	matrix=null,
 	colors=null,
@@ -17,16 +8,26 @@ function getColor(r,g,b){
 	scale=4,
 	canvas,
 	ctx;
+function rand(min,max){
+
+	return Math.random()*(max-min)+min;
+};
+function randColor(){
+	return 'rgb('+Math.round(rand(0,255))+','+Math.round(rand(0,255))+','+Math.round(rand(0,255))+')';
+};
+function getColor(r,g,b){
+	return 'rgb('+r+','+g+','+b+')';
+}
 function init(){
 	canvas = document.getElementById('cnv');
 	ctx = canvas.getContext('2d');
-	W=canvas.width, H=canvas.height;
+	W = canvas.width, H = canvas.height;
 	var inf = document.getElementById('inf').getContext('2d');
-	matrix=[[-1,-10,-10,-10,-10],
-			[-10,-1,-10,-10,-10],
-			[-10,-10,-1,-10,-10],
-			[-10,-10,-10,-1,-10],
-			[-10,-10,-10,-10,-1],];
+	matrix =[[-1,-10,-10,-10,-10],
+			   [-10,-1,-10,-10,-10],
+			   [-10,-10,-1,-10,-10],
+			   [-10,-10,-10,-1,-10],
+			   [-10,-10,-10,-10,-1],];
 	colors=[randColor(),randColor(),randColor(),randColor(),randColor()];
 	for(var i=0;i<colors.length;i++){
 		inf.fillStyle = colors[i];
@@ -41,7 +42,7 @@ function init(){
 			ax: 0*rand(-1,1),
 			ay: 0*rand(-1,1),
 			t: Math.round(rand(0,4)),
-			r: rand(1,5),
+			r: rand(1,4),
 			draw:function(){			
 				ctx.beginPath();
 				ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2, true);
@@ -113,7 +114,6 @@ function applyforce(j){
 	
 };
 function update(){
-	
 	for (var j=0;j<n;j++){	
 		applyforce(j);		
 	}
@@ -122,12 +122,30 @@ function update(){
 		ball[i].move();
 	}
 	draw();
-	window.requestAnimationFrame(update);
+	if (isRunning){
+		setTimeout(function() {
+				animReqest=window.requestAnimationFrame(update);
+	 
+	    }, 1000/60 );
+	}
 };
-function main(){
+function restart(){	
+	stop();
+	start();
+};
+function stop(){
+	
+	if (isRunning)
+		window.cancelAnimationFrame(animReqest);
+	
+	isRunning=false;
+}
+function start(){
 	if (!isRunning){
 		init();
-		window.requestAnimationFrame(update);
+		
+		clear();
+		animReqest=window.requestAnimationFrame(update);
 		isRunning=true;
 	}
 };

@@ -1,6 +1,8 @@
-var W, H, animReqest;
-var N=5, iter=0;
-var points=[]
+var W, H, 
+	animReqest,
+	N=5, iter=0,
+	points=[],
+	isRunning=false,
 function rand(min,max){
 	return Math.random()*(max-min)+min;
 };
@@ -10,7 +12,6 @@ function randColor(){
 function getColor(r,g,b){
 	return 'rgb('+r+','+g+','+b+')';
 }
- var isRunning=false,
 	
 	canvas,
 	ctx;
@@ -52,11 +53,8 @@ function draw(){
 };
 function dist(a,b){
 	return Math.sqrt((a.x-b.x)**2+(a.y-b.y)**2);
-};
-	
+};	
 function update(){
-
-	
 	draw();
 	var newPoints=[];
 	var i;
@@ -81,10 +79,9 @@ function update(){
 		iter++;
 	}
 };
-function restart(){
-	
-	isRunning=false;
-	main();
+function restart(){	
+	stop();
+	start();
 };
 function stop(){
 	
@@ -93,7 +90,7 @@ function stop(){
 	
 	isRunning=false;
 }
-function main(){
+function start(){
 	if (!isRunning){
 		init();
 		
