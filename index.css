@@ -11,6 +11,9 @@ body{
 .sub-block{
 	
 }
+.category_wrapper{
+	display: flex;
+}
 h1{
 	
 }
