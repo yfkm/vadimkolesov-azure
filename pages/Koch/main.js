@@ -1,59 +1,26 @@
-var W, H, 
-	animReqest,
-	N=5, iter=0,
+var	N=3, iter=0,
 	points=[],
-	isRunning=false,
-	canvas,
-	ctx;
-function rand(min,max){
-	return Math.random()*(max-min)+min;
-};
-function randColor(){
-	return 'rgb('+Math.round(rand(0,255))+','+Math.round(rand(0,255))+','+Math.round(rand(0,255))+')';
-};
-function getColor(r,g,b){
-	return 'rgb('+r+','+g+','+b+')';
-}
-	
+	sqrt3=Math.sqrt(3);
+
 function init(){
-	canvas = document.getElementById('cnv');
-	ctx = canvas.getContext('2d');
-	W=canvas.width, H=canvas.height;
-	var inf = document.getElementById('inf').getContext('2d');
+	G.init();
 	iter=0;
 	points=[];
-	points.push({x:0,y:H/2});
-	points.push({x:W,y:H/2});
+	points.push({x:0,y:G.H/2});
+	points.push({x:G.W*3/4,y:G.H*(0.5-sqrt3/4)});
+	points.push({x:G.W*3/4,y:G.H*(0.5+sqrt3/4)});
+	points.push({x:0,y:G.H/2});
 };
-function clear() {
-	ctx.fillStyle = 'rgba(0, 0, 0,)';
-	ctx.fillRect(0,0,W,H);
-};
-function line(x1,y1,x2,y2){
-	ctx.beginPath();
-	ctx.moveTo(x1,y1);
-	ctx.lineTo(x2,y2);
-	ctx.stroke();
-}
 function draw(){
-	clear();
-	ctx.strokeStyle=getColor(255,255,255);
-	ctx.lineWidth=1;
+	G.clear();
+	G.strokeColor(G.getColor(255,255,255));
+	G.strokeWidth(1);
 	
-	ctx.beginPath();
-	ctx.moveTo(points[0].x,points[0].y);
-	for (var i=0;i<points.length-1;i++){
-		
-	ctx.lineTo(points[i+1].x,points[i+1].y);
+	for (var i=0;i<points.length-1;i++){		
+		G.line(points[i].x,points[i].y,points[i+1].x,points[i+1].y);
 	}
-	
-	ctx.stroke();
-	
-	
 };
-function dist(a,b){
-	return Math.sqrt((a.x-b.x)**2+(a.y-b.y)**2);
-};	
+
 function update(){
 	draw();
 	var newPoints=[];
@@ -61,40 +28,39 @@ function update(){
 	for (i=0;i<points.length-1;i++){
 		newPoints.push(points[i]);
 		newPoints.push({x:(points[i].x+(points[i+1].x-points[i].x)/3),y:(points[i].y+(points[i+1].y-points[i].y)/3)});		
-		newPoints.push({x:((points[i+1].y-points[i].y)/3+(points[i+1].x+points[i].x)/2),y:((points[i].x-points[i+1].x)/3+(points[i+1].y+points[i].y)/2)});		
+		newPoints.push({x:((points[i+1].y-points[i].y)/3*sqrt3/2+(points[i+1].x+points[i].x)/2),y:((points[i].x-points[i+1].x)/3*sqrt3/2+(points[i+1].y+points[i].y)/2)});		
 		newPoints.push({x:(points[i].x+2*(points[i+1].x-points[i].x)/3),y:(points[i].y+2*(points[i+1].y-points[i].y)/3)});
 	}	
 	newPoints.push(points[i]);
 	points=newPoints.slice();
 	newPoints=[];
-	if (isRunning){
-		
+	if (G.isRunning){		
 		setTimeout(function() {
-			animReqest=window.requestAnimationFrame(update);
- 
-    }, 1000 );
-		if (iter>N){
+				G.animRequest=window.requestAnimationFrame(update); 
+			}, 1000);	
+	}
+	if (iter>N){
 			stop();
 		}
 		iter++;
-	}
-};
-function restart(){	
-	stop();
-	start();
 };
 function stop(){
 	
-	if (isRunning)
-		window.cancelAnimationFrame(animReqest);
-	
-	isRunning=false;
+	if (G.isRunning){
+		window.cancelAnimationFrame(G.animRequest);
+		G.animRequest=undefined;		
+		G.isRunning=false;
+	}
 }
 function start(){
-	if (!isRunning){
-		init();		
-		clear();
-		animReqest=window.requestAnimationFrame(update);
-		isRunning=true;
+	if (!G.isRunning){
+		init();
+		G.animRequest=window.requestAnimationFrame(update);
+		G.isRunning=true;
 	}
+};
+
+function restart(){	
+	stop();
+	setTimeout(function(){start();}, 100 );
 };

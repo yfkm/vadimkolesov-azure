@@ -1,50 +1,129 @@
 body{
-	background: #ccc;
+	background: #555;
 	
 }
-.demo_wrapper{
-	float:center;
+.main_block{
+	
+	
+	display: flex;
+	flex-direction:horizontal;
+	
+	transition: linear 0.1s;
+}
+.options_block{
+	border-bottom:solid 2px #fefefe;
+	border-right:solid 2px #eee;	
+	border-top:solid 2px #333;
+	border-left:solid 2px #333;
+	background: #d0d0d0;
+	padding: 10px;
+	margin:5px;
+	transition: linear 0.1s;
+	
+	float:left;
+	display: inline-block;
+}
+
+.options_block div.hideable{
+	width:300px;
+}
+.demo_block{
+	
 	padding: 10px;
 	background: #888;
+	left:400px;
+	margin:5px;
+	
+	border-top:solid 2px #fefefe;
+	border-left:solid 2px #eee;	
+	border-bottom:solid 2px #333;
+	border-right:solid 2px #333;
 	display: inline-block;
 }
 .buttons_wrapper{
 	display:flex;
 }
+.info_block{	
+	border-bottom:solid 2px #fefefe;
+	border-right:solid 2px #eee;	
+	border-top:solid 2px #333;
+	border-left:solid 2px #333;
+	background: #d0d0d0;
+	padding: 10px;
+	
+	margin:5px;
+	transition: linear 0.1s;
+	float:right;
+	display: inline-block;
+}
+.info_block div.hideable{
+	width:300px;
+}
+.hideable{
+	
+	transition: linear 0.1s;
+}
 canvas{
-	background: #000;
+	border-bottom:solid 2px #fefefe;
+	border-right:solid 2px #eee;	
+	border-top:solid 2px #333;
+	border-left:solid 2px #333;
+	background: #d0d0d0;
 	display:block;
 }
 .info{
 	margin-bottom: 8px;
 }
+.credits{
+	float:right;
+}
 .button{
-	display: inline;
-	margin-top: 10px;
+	display: inline-block;
 	padding: 6px;
 	width:100%;
 	margin:10px 5px 0 5px;
-	background: #080;
-	color: #020;
+	background: #555;
+	color: #000;
 	text-align:center;
-	font-style: italic;
 	font-family: 'arial';
-	border: 2px solid #030;	
-	transition: linear 0.2s;
+
+	border-top:solid 2px #fefefe;
+	border-left:solid 2px #eee;	
+	border-bottom:solid 2px #333;
+	border-right:solid 2px #333;
+	
+	transition: linear 0.1s;
+}
+.button.small{	
+	background:#777;
+	margin:-9px;
+	padding:4px;
+	font-size:7px;
+	width:5px;
+	height:5px;
 }
 .button:hover{
-	transition: linear 0.2s;
-	background: #040;
-	color: #060;
+	transition: linear 0.1s;
+	background: #444;
+	
+	border-top:solid 2px #fefefe;
+	border-left:solid 2px #eee;	
+	border-bottom:solid 2px #333;
+	border-right:solid 2px #333;
+	color: #666;
 }
 .button:active{
-	transition: linear 0.2s;
-	background: #020;
-	color: #080;
+	transition: linear 0.1s;
+	background: #222;
+	
+	border-bottom:solid 2px #fefefe;
+	border-right:solid 2px #eee;	
+	border-top:solid 2px #333;
+	border-left:solid 2px #333;
+	color: #888;
 }
 .label{
 	color:#888;
-	float:left;
 	margin:5px;
 	font-style: italic;
 }
