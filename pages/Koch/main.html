@@ -1,19 +1,39 @@
 <html>
 	<head>
 		<title>KochCurve</title>
+		
+		<script src="./../../scripts/page.js"></script>
+		<script src="./../../scripts/graph.js"></script>
 		<script src="main.js"></script>
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-		<div class="demo_wrapper">
-			<canvas class="info" id="inf" width="500" height="50"></canvas>
-			<canvas id="cnv" width="500" height="500"></canvas>
-			<div class="buttons_wrapper">
-				<span id="run-button" class="button" onclick="start()">START</span>	
-				<span id="stop-button" class="button" onclick="stop()">STOP</span>	
-				<span id="restart-button" class="button" onclick="restart()">RESTART</span>
+		<div class="main_block">
+			<div class="options_block">
+				<span class="button small" onclick="hide(this)">X</span>
+				<div class="hideable">
+					<h2>Options</h2>
+					<div>options will be soon</div>
+				</div>
+			</div>
+			<div class="demo_block">
+			
+				<canvas id="cnv" width="500" height="500"></canvas>
+				<div class="buttons_wrapper">
+					<span id="run-button" class="button" onclick="start()">START</span>	
+					<span id="stop-button" class="button" onclick="stop()">STOP</span>	
+					<span id="restart-button" class="button" onclick="restart()">RESTART</span>
+				</div>
+			</div>
+			<div class="info_block">
+				<span class="button small" onclick="hide(this)">X</span>
+				<div class="hideable">
+					<h2>Title</h2>
+					<p>description will be soon
+					</p>
+					<span class="credits"><a href="#">author</a></span>					
+				</div>
 			</div>
 		</div>
-		
 	</body>
 </html>
