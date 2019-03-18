@@ -1,0 +1,2 @@
+кривая пеано
+https://en.wikipedia.org/wiki/Space-filling_curve
