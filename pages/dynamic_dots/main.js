@@ -1,60 +1,40 @@
-var W, H,
-   isRunning=false,
-	ball=[],
-	matrix=null,
-	colors=null,
-	n=1500,
+var ball=[],
+	n=1000,
 	max_dist=100,
-	scale=4,
-	canvas,
-	ctx;
-function rand(min,max){
-
-	return Math.random()*(max-min)+min;
-};
-function randColor(){
-	return 'rgb('+Math.round(rand(0,255))+','+Math.round(rand(0,255))+','+Math.round(rand(0,255))+')';
-};
-function getColor(r,g,b){
-	return 'rgb('+r+','+g+','+b+')';
-}
+	colors=[],
+	scale=4;
 function init(){
-	canvas = document.getElementById('cnv');
-	ctx = canvas.getContext('2d');
-	W = canvas.width, H = canvas.height;
-	var inf = document.getElementById('inf').getContext('2d');
+	G.init();
 	matrix =[[-1,-10,-10,-10,-10],
 			   [-10,-1,-10,-10,-10],
 			   [-10,-10,-1,-10,-10],
 			   [-10,-10,-10,-1,-10],
 			   [-10,-10,-10,-10,-1],];
-	colors=[randColor(),randColor(),randColor(),randColor(),randColor()];
-	for(var i=0;i<colors.length;i++){
-		inf.fillStyle = colors[i];
-		inf.fillRect(5+50*i,5,40,40);
-	}	
+	colors=[G.randomColor(),G.randomColor(),G.randomColor(),G.randomColor(),G.randomColor()];
+
 	for(var i=0;i<n;i++){
 		ball[i]={
-			x: rand(10,W-10),
-			y: rand(10,H-10),
-			vx: 0*rand(-1,1),
-			vy: 0*rand(-1,1),
-			ax: 0*rand(-1,1),
-			ay: 0*rand(-1,1),
-			t: Math.round(rand(0,4)),
-			r: rand(1,4),
+			x: G.random(10,G.W-10),
+			y: G.random(10,G.H-10),
+			vx: 0*G.random(-1,1),
+			vy: 0*G.random(-1,1),
+			ax: 0*G.random(-1,1),
+			ay: 0*G.random(-1,1),
+			t: Math.round(G.random(0,4)),
+			r: G.random(1,4),
 			draw:function(){			
-				ctx.beginPath();
-				ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2, true);
-				ctx.closePath();
-				ctx.fillStyle = colors[this.t];
+				//ctx.beginPath();
+				//ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2, true);
+				//ctx.closePath();
+				G.fillColor(colors[this.t]);
 				//ctx.fillRect(this.x,this.y,this.r,this.r);
-				ctx.fill();
+				//ctx.fill();
+				G.circle(this.x,this.y,this.r,true);
 			},
 			move:function(){
 				
-				if(this.x<0||this.x>W)this.vx*=-1;
-				if(this.y<0||this.y>H)this.vy*=-1;
+				if(this.x<0||this.x>G.W)this.vx*=-1;
+				if(this.y<0||this.y>G.H)this.vy*=-1;
 				this.x+=this.vx;
 				this.y+=this.vy;
 				this.vx+=this.ax;
@@ -70,12 +50,8 @@ function init(){
 		};
 	}
 };
-function clear() {
-	ctx.fillStyle = 'rgba(0, 0, 0,0.3)';
-	ctx.fillRect(0,0,W,H);
-};
 function draw(){
-	clear();
+	G.clear();
 	for(var i=0;i<n;i++){
 		ball[i].draw();
 	}
@@ -100,10 +76,10 @@ function applyforce(j){
 			}	
 		}		
 	}
-	if (Math.min(a.x, W-a.x)>a.r/2)
-		fx+=25/(a.x**2)-25/((W-a.x)**2);
-	if (Math.min(a.y, H-a.y)>a.r/2)
-		fy+=25/(a.y**2)-25/((H-a.y)**2);
+	if (Math.min(a.x, G.W-a.x)>a.r/2)
+		fx+=25/(a.x**2)-25/((G.W-a.x)**2);
+	if (Math.min(a.y, G.H-a.y)>a.r/2)
+		fy+=25/(a.y**2)-25/((G.H-a.y)**2);
 	a.ax=fx;
 	a.ay=fy;
 	var m=Math.sqrt(a.ax**2+a.ay**2);
@@ -122,30 +98,32 @@ function update(){
 		ball[i].move();
 	}
 	draw();
-	if (isRunning){
+	if (G.isRunning){
 		setTimeout(function() {
-				animReqest=window.requestAnimationFrame(update);
+				G.animRequest=window.requestAnimationFrame(update);
 	 
-	    }, 1000/60 );
+	    }, 1000/G.FPS );
 	}
-};
-function restart(){	
-	stop();
-	start();
 };
 function stop(){
 	
-	if (isRunning)
-		window.cancelAnimationFrame(animReqest);
-	
-	isRunning=false;
+	if (G.isRunning){
+		window.cancelAnimationFrame(G.animRequest);
+		G.animRequest=undefined;		
+		G.isRunning=false;
+	}
 }
 function start(){
-	if (!isRunning){
+	if (!G.isRunning){
 		init();
 		
-		clear();
-		animReqest=window.requestAnimationFrame(update);
-		isRunning=true;
+		G.clear();
+		G.animRequest=window.requestAnimationFrame(update);
+		G.isRunning=true;
 	}
+};
+
+function restart(){	
+	stop();
+	setTimeout(function(){start();}, 100 );
 };
