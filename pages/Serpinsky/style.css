@@ -1,25 +1,9 @@
 body{
-	background: #555;
-	
+	background: #555;	
 }
 .main_block{
-	
-	
-	display: flex;
-	flex-direction:horizontal;
-	
-	transition: linear 0.1s;
 }
-.options_block{
-	border-bottom:solid 2px #fefefe;
-	border-right:solid 2px #eee;	
-	border-top:solid 2px #333;
-	border-left:solid 2px #333;
-	background: #d0d0d0;
-	padding: 10px;
-	margin:5px;
-	transition: linear 0.1s;
-	
+.options_block{	
 	float:left;
 	display: inline-block;
 }
@@ -29,46 +13,25 @@ body{
 }
 .demo_block{
 	
-	padding: 10px;
-	background: #888;
-	left:400px;
 	margin:5px;
 	
-	border-top:solid 2px #fefefe;
-	border-left:solid 2px #eee;	
-	border-bottom:solid 2px #333;
-	border-right:solid 2px #333;
 	display: inline-block;
 }
 .buttons_wrapper{
 	display:flex;
 }
 .info_block{	
-	border-bottom:solid 2px #fefefe;
-	border-right:solid 2px #eee;	
-	border-top:solid 2px #333;
-	border-left:solid 2px #333;
-	background: #d0d0d0;
-	padding: 10px;
 	
 	margin:5px;
-	transition: linear 0.1s;
 	float:right;
 	display: inline-block;
 }
 .info_block div.hideable{
 	width:300px;
 }
-.hideable{
-	
-	transition: linear 0.1s;
+.hideable{	
 }
 canvas{
-	border-bottom:solid 2px #fefefe;
-	border-right:solid 2px #eee;	
-	border-top:solid 2px #333;
-	border-left:solid 2px #333;
-	background: #d0d0d0;
 	display:block;
 }
 .info{
@@ -81,21 +44,11 @@ canvas{
 	display: inline-block;
 	padding: 6px;
 	width:100%;
-	margin:10px 5px 0 5px;
-	background: #555;
-	color: #000;
 	text-align:center;
-	font-family: 'arial';
-
-	border-top:solid 2px #fefefe;
-	border-left:solid 2px #eee;	
-	border-bottom:solid 2px #333;
-	border-right:solid 2px #333;
-	
+	font-family: 'arial';	
 	transition: linear 0.1s;
 }
 .button.small{	
-	background:#777;
 	margin:-9px;
 	padding:4px;
 	font-size:7px;
@@ -104,23 +57,9 @@ canvas{
 }
 .button:hover{
 	transition: linear 0.1s;
-	background: #444;
-	
-	border-top:solid 2px #fefefe;
-	border-left:solid 2px #eee;	
-	border-bottom:solid 2px #333;
-	border-right:solid 2px #333;
-	color: #666;
 }
 .button:active{
 	transition: linear 0.1s;
-	background: #222;
-	
-	border-bottom:solid 2px #fefefe;
-	border-right:solid 2px #eee;	
-	border-top:solid 2px #333;
-	border-left:solid 2px #333;
-	color: #888;
 }
 .label{
 	color:#888;

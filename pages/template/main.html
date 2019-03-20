@@ -6,27 +6,29 @@
 		<script src="./../../scripts/graph.js"></script>
 		<script src="main.js"></script>
 		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="./../../styles/old.css">
+		<link rel="stylesheet" href="./../../styles/dark.css">
 	</head>
-	<body>
+	<body class="dark">
 		<div class="main_block">
-			<div class="options_block">
-				<span class="button small" onclick="hide(this)">X</span>
+			<div class="options_block dark">
+				<span class="button small dark" onclick="hide(this)">X</span>
 				<div class="hideable">
 					<h2>Options</h2>
 					<div>options here</div>
 				</div>
 			</div>
-			<div class="demo_block">
+			<div class="demo_block dark">
 			
-				<canvas id="cnv" width="500" height="500"></canvas>
-				<div class="buttons_wrapper">
-					<span id="run-button" class="button" onclick="start()">START</span>	
-					<span id="stop-button" class="button" onclick="stop()">STOP</span>	
-					<span id="restart-button" class="button" onclick="restart()">RESTART</span>
+				<canvas id="cnv" class="dark" width="500" height="500"></canvas>
+				<div class="buttons_wrapper dark">
+					<span id="run-button" class="button dark" onclick="start()">START</span>	
+					<span id="stop-button" class="button dark" onclick="stop()">STOP</span>	
+					<span id="restart-button" class="button dark" onclick="restart()">RESTART</span>
 				</div>
 			</div>
-			<div class="info_block">
-				<span class="button small" onclick="hide(this)">X</span>
+			<div class="info_block dark">
+				<span class="button small dark" onclick="hide(this)">X</span>
 				<div class="hideable">
 					<h2>Title</h2>
 					<p>some description
@@ -37,7 +39,7 @@
 						some description 
 						some description 
 					</p>
-					<span class="credits"><a href="#">author</a></span>					
+					<span ><a class="credits dark" href="#">author</a></span>					
 				</div>
 			</div>
 		</div>
