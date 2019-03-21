@@ -13,6 +13,7 @@ function hide(e){
 };
 
 function loadNavigationPanel(){
+	
 	var xhr= new XMLHttpRequest();
 	xhr.open('GET', 'navigation.json', true);
 	xhr.onreadystatechange= function() {
@@ -21,9 +22,9 @@ function loadNavigationPanel(){
 		var nav = JSON.parse(this.responseText);
 		var navhtml = '';
 		for (var i in nav.pages){
-			navhtml.join("<a href="+i.url+"><span class='button'>"+i.caption+"</span></a>")
+			navhtml.join("<a href="+i.url+"><span class='button'>"+i.caption+"</span></a>");
 		}
-		document.getElementById('y').innerHTML= navhtml;
+		document.getElementById('nav').innerHTML= navhtml;
 	};
 	xhr.send();
 	
