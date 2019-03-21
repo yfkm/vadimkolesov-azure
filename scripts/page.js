@@ -15,8 +15,7 @@ function hide(e){
 function loadNavigationPanel(){
 	
 	var xhr= new XMLHttpRequest();
-	xhr.open('GET', '/resources/navigation.json');
-	xhr.send();
+	xhr.open('GET', '/resources/navigation.xml');
 	xhr.onreadystatechange= function() {
 		if (this.readyState!==4) return;
 		if (this.status!==200) return; // or whatever error handling you want
@@ -27,5 +26,6 @@ function loadNavigationPanel(){
 		}
 		document.getElementById('nav').innerHTML= navhtml;
 	};
+	xhr.send();
 	
 }
