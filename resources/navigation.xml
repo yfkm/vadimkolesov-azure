@@ -3,19 +3,19 @@
 	[
 		{
 			"caption":"Home",
-			"url":"./index.html"
+			"url":"/index.html"
 		},
 		{
 			"caption":"Koch Curve",
-			"url":"./pages/Koch/main.html"
+			"url":"/pages/Koch/main.html"
 		},
 		{
 			"caption":"Serpinsky",
-			"url":"./pages/Serpinsky/main.html"
+			"url":"/pages/Serpinsky/main.html"
 		},
 		{
 			"caption":"dynamic_dots",
-			"url":"./pages/dynamic_dots/main.html"
+			"url":"/pages/dynamic_dots/main.html"
 		}
 	]
 }
