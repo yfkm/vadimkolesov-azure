@@ -16,7 +16,6 @@ function loadNavigationPanel(){
 	
 	var xhr= new XMLHttpRequest();
 	xhr.open('GET', '/resources/navigation.json');
-	xhr.responseType = 'json';
 	xhr.send();
 	xhr.onreadystatechange= function() {
 		if (this.readyState!==4) return;
