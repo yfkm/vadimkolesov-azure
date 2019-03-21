@@ -22,7 +22,7 @@ function loadNavigationPanel(){
 		var nav = JSON.parse(this.responseText);
 		var navhtml = '';
 		for (var i in nav.pages){
-			navhtml = navhtml + "<a href="+i.url+"><span class='button'>"+i.caption+"</span></a>";
+			navhtml = navhtml + "<a href="+nav.pages[i].url+"><span class='button'>"+nav.pages[i].caption+"</span></a>";
 		}
 		document.getElementById('nav').innerHTML= navhtml;
 	};
