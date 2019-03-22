@@ -1,0 +1,21 @@
+{
+	"pages":
+	[
+		{
+			"caption":"Home",
+			"url":"/index.html"
+		},
+		{
+			"caption":"Koch Curve",
+			"url":"/pages/Koch/main.html"
+		},
+		{
+			"caption":"Serpinsky",
+			"url":"/pages/Serpinsky/main.html"
+		},
+		{
+			"caption":"dynamic_dots",
+			"url":"/pages/dynamic_dots/main.html"
+		}
+	]
+}

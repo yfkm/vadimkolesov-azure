@@ -1,11 +1,11 @@
-body.dark{
+body{
 	background: #050505;
 	
 }
-.main_block.dark{
-	
+.main{
+	display: flex;
 }
-.options_block.dark{
+.panel{
 	border-radius:3px;
 	border-top:solid 2px #111;
 	border-left:solid 2px #111;	
@@ -13,92 +13,93 @@ body.dark{
 	border-right:solid 2px #777;
 	background: #222;
 	color:#aaa;
+}
+.options{		
 	padding: 10px;
 	margin:5px;	
+	float:left;
+	display: inline-block;
+	transition: linear 0.2s;
 }
-
-.demo_block.dark{
-	
-	padding-top: 2px;
-	padding-bottom: 0;
-	padding-left: 0;
-	padding-right: 0;
-	
+.options div.hideable{
+	width:300px;
+}
+.block{
 	background: #333;
-	border-radius:7px;
 	border-top:solid 2px #777;
 	border-left:solid 2px #777;	
 	border-bottom:solid 2px #111;
 	border-right:solid 2px #111;
+	color: #aaa;
 }
-.buttons_wrapper.dark{
+.demo{	
+	padding-top: 2px;
+	padding-bottom: 0;
+	padding-left: 0;
+	padding-right: 0;	
+	margin:5px;	
+	display: inline-block;
+	border-radius:7px;
+}
+.buttons_wrapper{
 	border-top:solid 4px #777;
 	border-left:solid 4px #777;	
 	border-bottom:solid 4px #111;
 	border-right:solid 4px #111;
+	display:flex;
 }
-.info_block.dark{	
-	border-radius:3px;
-	border-top:solid 2px #111;
-	border-left:solid 2px #111;	
-	border-bottom:solid 2px #777;
-	border-right:solid 2px #777;
-	background: #222;
-	color:#aaa;
+.info{	
+		
 	padding: 10px;
-	
-	margin:5px;
-	transition: linear 0.1s;
+	margin:5px;	
+	transition: linear 0.2s;
 	float:right;
 	display: inline-block;
 }
-.credits.dark{
+.credits{
 	color:#eee;
 	font-style:italic;
 }
-.credits.dark:visited{
+.credits:visited{
 	color:#bbb;
 }
-canvas.dark{
-	border-radius:3px;
-	border-top:solid 2px #111;
-	border-left:solid 2px #111;	
-	border-bottom:solid 2px #777;
-	border-right:solid 2px #777;
-	background: #222;
+canvas{
+	
+	display:block;
 }
-.button.dark{
+.info div.hideable{
+	width:300px;
+}
+.button{
 	padding: 6px;
-	margin:2px;
-	
-	color: #aaa;
-	background: #333;
+	margin:2px;	
 	border-radius:2px;
-	border-top:solid 2px #777;
-	border-left:solid 2px #777;	
-	border-bottom:solid 2px #111;
-	border-right:solid 2px #111;
-	
 	transition: linear 0.1s;
+	display: inline-block;
+	padding: 6px;
+	width:100%;
+	text-align:center;
+	font-family: 'arial';	
 }
-.button.small.dark{	
-	
+.credits{
+	float:right;
 }
 .button:hover{
 	background: #444;	
-	border-top:solid 2px #777;
-	border-left:solid 2px #777;	
-	border-bottom:solid 2px #111;
-	border-right:solid 2px #111;
 	color: #bbb;
+	transition: linear 0.1s;
 }
 .button:active{
 	background: #222;	
-	border-bottom:solid 2px #777;
-	border-right:solid 2px #777;	
-	border-top:solid 2px #111;
-	border-left:solid 2px #111;
 	color: #999;
+	transition: linear 0.1s;
+}
+.button.small{	
+	margin:-9px;
+	padding:4px;
+	font-size:7px;
+	width:5px;
+	height:5px;
 }
 .label{
 	color:#888;
