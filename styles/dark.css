@@ -93,6 +93,9 @@ canvas{
 .credits{
 	float:right;
 }
+a{
+	text-decoration:none;
+}
 .button:hover{
 	background: #444;	
 	color: #bbb;
