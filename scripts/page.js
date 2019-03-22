@@ -1,12 +1,14 @@
 function hide(e){
 	var content = e.parentElement.getElementsByClassName("hideable")[0];
 	if (content){
-		if (content.style.display == "none"){
-			content.style.display = "block";
+		if (content.style.visibility == "hidden"){
+			content.style.visibility = "visible";
+			e.parentElement.style.width = "300px"
 			e.innerHTML = "X";
 		}
 		else{
-			content.style.display = "none";
+			content.style.visibility = "hidden";
+			e.parentElement.style.width = "0"
 			e.innerHTML = "O";
 		}
 	}

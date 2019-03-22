@@ -6,33 +6,32 @@
 		<script src="./../../scripts/graph.js"></script>
 		<script src="main.js"></script>
 		<link rel="stylesheet" href="style.css">
-		<link rel="stylesheet" href="./../../styles/old.css">
 		<link rel="stylesheet" href="./../../styles/dark.css">
 	</head>
-	<body class="dark" onload="loadNavigationPanel()">>
-		<div class="main_block">
-			<div id="nav" class="options_block dark" >
+	<body class="" onload="loadNavigationPanel()">>
+		<div class="main">
+			<div id="nav" class="panel navigation" >
 				
 			</div>
 		
-			<div class="options_block dark">
-				<span class="button small dark" onclick="hide(this)">X</span>
+			<div class="demo block">
+			
+				<canvas id="cnv" class="panel" width="500" height="500"></canvas>
+				<div class="buttons_wrapper">
+					<span id="run-button" class="block button" onclick="start()">START</span>	
+					<span id="stop-button" class="block button" onclick="stop()">STOP</span>	
+					<span id="restart-button" class="block button" onclick="restart()">RESTART</span>
+				</div>
+			</div>
+			<div class="panel options">
+				<span class="block button small " onclick="hide(this)">X</span>
 				<div class="hideable">
 					<h2>Options</h2>					
 					<div>options here</div>
 				</div>
 			</div>
-			<div class="demo_block dark">
-			
-				<canvas id="cnv" class="dark" width="500" height="500"></canvas>
-				<div class="buttons_wrapper dark">
-					<span id="run-button" class="button dark" onclick="start()">START</span>	
-					<span id="stop-button" class="button dark" onclick="stop()">STOP</span>	
-					<span id="restart-button" class="button dark" onclick="restart()">RESTART</span>
-				</div>
-			</div>
-			<div class="info_block dark">
-				<span class="button small dark" onclick="hide(this)">X</span>
+			<div class="info panel">
+				<span class="block button small " onclick="hide(this)">X</span>
 				<div class="hideable">
 					<h2>Title</h2>
 					<p>some description
@@ -43,7 +42,7 @@
 						some description 
 						some description 
 					</p>
-					<span ><a class="credits dark" href="#">author</a></span>					
+					<span ><a class="credits" href="#">author</a></span>					
 				</div>
 			</div>
 		</div>
