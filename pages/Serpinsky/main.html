@@ -1,39 +1,45 @@
 <html>
 	<head>
-		<title>SerpinskyTriangle</title>
+		<title>Serpinsky Triangle</title>
 		
 		<script src="./../../scripts/page.js"></script>
 		<script src="./../../scripts/graph.js"></script>
 		<script src="main.js"></script>
 		<link rel="stylesheet" href="style.css">
-		<link rel="stylesheet" href="./../../styles/old.css">
 		<link rel="stylesheet" href="./../../styles/dark.css">
 	</head>
-	<body>
-		<div class="main_block">
-			<div class="options_block">
-				<span class="button small" onclick="hide(this)">X</span>
-				<div class="hideable">
-					<h2>Options</h2>
-					<div>options will be soon</div>
-				</div>
-			</div>
-			<div class="demo_block">
-			
-				<canvas id="cnv" width="500" height="500"></canvas>
+	<body class="" onload="loadNavigationPanel()">
+		<div class="main">
+			<div id="nav" class="panel navigation" >				
+			</div>		
+			<div class="demo block">			
+				<canvas id="cnv" class="panel" width="500" height="500"></canvas>
 				<div class="buttons_wrapper">
-					<span id="run-button" class="button" onclick="start()">START</span>	
-					<span id="stop-button" class="button" onclick="stop()">STOP</span>	
-					<span id="restart-button" class="button" onclick="restart()">RESTART</span>
+					<span id="run-button" class="block button" onclick="start()">START</span>	
+					<span id="stop-button" class="block button" onclick="stop()">STOP</span>	
+					<span id="restart-button" class="block button" onclick="restart()">RESTART</span>
 				</div>
 			</div>
-			<div class="info_block">
-				<span class="button small" onclick="hide(this)">X</span>
+			<div class="panel options">
+				<span class="block button small " onclick="hide(this)">X</span>
 				<div class="hideable">
-					<h2>Serpinsky triangle</h2>
-					<p>description will be soon
+					<h2>Options</h2>					
+					<div>options here</div>
+				</div>
+			</div>
+			<div class="info panel">
+				<span class="block button small " onclick="hide(this)">X</span>
+				<div class="hideable">
+					<h2>Serpinsky Triangle</h2>
+					<p>some description
+						some description
+						some description
+						some description
+						some description 
+						some description 
+						some description 
 					</p>
-					<span class="credits"><a href="#">author</a></span>					
+					<span ><a class="credits" href="#">author</a></span>					
 				</div>
 			</div>
 		</div>
