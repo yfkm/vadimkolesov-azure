@@ -1,68 +1,26 @@
-body{
-	background: #555;	
+body{	
 }
-.main_block{
+.main{
 }
-.options_block{	
-	float:left;
-	display: inline-block;
+.options{	
 }
-
-.options_block div.hideable{
-	width:300px;
+.options div.hideable{
 }
-.demo_block{
-	
-	margin:5px;
-	
-	display: inline-block;
+.demo{
 }
-.buttons_wrapper{
-	display:flex;
+.buttons_wrapper{	
 }
-.info_block{	
-	
-	margin:5px;
-	float:right;
-	display: inline-block;
-}
-.info_block div.hideable{
-	width:300px;
+.info{		
 }
 .hideable{	
 }
 canvas{
-	display:block;
-}
-.info{
-	margin-bottom: 8px;
-}
-.credits{
-	float:right;
 }
 .button{
-	display: inline-block;
-	padding: 6px;
-	width:100%;
-	text-align:center;
-	font-family: 'arial';	
-	transition: linear 0.1s;
-}
-.button.small{	
-	margin:-9px;
-	padding:4px;
-	font-size:7px;
-	width:5px;
-	height:5px;
 }
 .button:hover{
-	transition: linear 0.1s;
 }
 .button:active{
-	transition: linear 0.1s;
 }
 .label{
-	color:#888;
-	margin:5px;
-	font-style: italic;
 }
